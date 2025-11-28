@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="This is a web app to users manage their daily task.">
+    <meta name="author" content="Esosa C. Obazee">
+    <link rel="stylesheet" href="">
+    <title>To Do List</title>
+    <script src="app.js" defer></script>
 </head>
 <body>
     
+    <div class="app-container">
+        <h1>To-Do List</h1>
+        
+        <!-- News Section -->
+        <div id="news-section">
+            <h2>Today's News</h2>
+            <ul id="news-list">
+                <!-- News articles will go here -->
+            </ul>
+        </div>
+        
+        <!-- Motivational Quote Section -->
+        <div id="quote-of-the-day">
+            <h2>Motivational Quote</h2>
+            <p id="quote">Loading...</p>
+        </div>
+        
+        <!-- Joke Section -->
+        <div id="joke-of-the-day">
+            <h2>Get a Joke!</h2>
+            <p id="joke">Loading joke...</p>
+            <button id="get-joke-btn">Get a New Joke</button>
+        </div>
+
+        <!-- To-Do List -->
+        <div id="task-list-container">
+            <h2>Your Tasks</h2>
+            <input type="text" id="task-input" placeholder="Add a new task">
+            <button id="add-task-btn">Add Task</button>
+            <ul id="task-list"></ul>
+        </div>
+    </div>
+    
+    
+
+    <footer>
+    <p>©️ <span id="getYear"></span> | Esosa C. Obazee | Nigeria </p>
+      <!--  <p> Last Modified <span id="lastModified"></span></p>-->  
+</footer>
 </body>
 </html>
