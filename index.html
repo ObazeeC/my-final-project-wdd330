@@ -6,14 +6,37 @@
     <meta name="description" content="This is a web app to users manage their daily task.">
     <meta name="author" content="Esosa C. Obazee">
     <link rel="stylesheet" href="">
-    <title>To Do List</title>
-    <script src="app.js" defer></script>
+    <title>To do</title>
+   <link rel="stylesheet" href="styles/todo.css">
+    <script src="scripts/todo.js" defer></script>
 </head>
 <body>
-    
-    <div class="app-container">
-        <h1>To-Do List</h1>
+    <header>
+         <div class="pagelogo">
+       <img loading="lazy" src="images/logo.web" alt="Site Logo">
+
+            <div class="iconlogo hedlogo">
+        <a href="https://www.facebook.com/login.php/" target="_blank" ><img loading="lazy" src="images/fbook.webp" alt="Facebook logo"></a> 
+        <a href="https://www.instagram.com/accounts/login/" target="_blank"> <img loading="lazy" src="images/instagram02.webp" alt="Instagram"></a>  
+        <a href="https://web.whatsapp.com/" target="_blank"><img loading="lazy" src="images/whatsapp01.webp" alt="Whatsapp"></a>
+        <a href="https://www.youtube.com/" target="_blank" ><img loading="lazy" src="images/youtube01.webp" alt="Youtube"></a> 
+        <a href="https://x.com/" ><img loading="lazy" src="images/twitter02.webp" alt="twitter"></a> 
         
+      </div>
+
+      </div>
+    </header>
+    <div class="app-container">
+        <h1>To-Do </h1>
+        
+        <!-- To-Do List -->
+        <div id="task-list-container">
+            <h2>Your Tasks</h2>
+            <input type="text" id="task-input" placeholder="Add a new task">
+            <button id="add-task-btn">Add Task</button>
+            <ul id="task-list"></ul>
+        </div>
+
         <!-- News Section -->
         <div id="news-section">
             <h2>Today's News</h2>
@@ -22,6 +45,11 @@
             </ul>
         </div>
         
+         <div id="quote-of-the-day">
+            <h2>Weather</h2>
+            <p id="quote">Loading...</p>
+        </div>
+
         <!-- Motivational Quote Section -->
         <div id="quote-of-the-day">
             <h2>Motivational Quote</h2>
@@ -35,13 +63,7 @@
             <button id="get-joke-btn">Get a New Joke</button>
         </div>
 
-        <!-- To-Do List -->
-        <div id="task-list-container">
-            <h2>Your Tasks</h2>
-            <input type="text" id="task-input" placeholder="Add a new task">
-            <button id="add-task-btn">Add Task</button>
-            <ul id="task-list"></ul>
-        </div>
+        
     </div>
     
     

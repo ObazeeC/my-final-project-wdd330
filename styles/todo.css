@@ -1,0 +1,78 @@
+
+/*
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 2px solid red;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#task-list-container {
+    margin-top: 30px;
+}
+
+#task-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#task-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#weather-info, #quote-of-the-day, #joke-of-the-day, #news-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.incomplete {
+    color: black;
+}
+footer{
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
