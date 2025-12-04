@@ -1,9 +1,17 @@
 const newsApiURL = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=4c2e938b6b194885a76882996b92f3b2';
-const newsTechURl = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=4c2e938b6b194885a76882996b92f3b2';
+//const newsTechURl = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=4c2e938b6b194885a76882996b92f3b2';
+const quotesAPIUrl = 'https://api.quotable.io/random';
 const jokeAPIUrl = 'https://v2.jokeapi.dev/joke/Any?type=single';
 const weather = 'http://api.weatherapi.com/v1/current.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
-const weatherForecast = 'http://api.weatherapi.com/v1/forecast.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
+const jokeText = document.getElementById('joke');
 
+const taskInput = document.getElementById('task-input');
+const addTaskBtn = document.getElementById('add-task-btn');
+const taskList = document.getElementById('task-list');
+const jokeBtn = document.getElementById('get-joke-btn');
+const clearAllBtn = document.getElementById('clearAll-task-btn')
+
+const newsList = document.getElementById('news-list');
 /*
 When fetching weather api from weather Api, 
 Base URL : http://api.weatherapi.com/v1
@@ -30,63 +38,261 @@ example : http://api.weatherapi.com/v1/current.json?key=<YOUR_API_KEY>&q=London
 
 
 
-async function fetchWeather(){
-    try{
-        const response = await fetch(weather);
-        const data = await response.json();
-       console.log(data);
-    }catch(error){
-        console.log(error);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//****************WARNING !!!!! **********************************
+//  TO DO Application section,  DO NOT TOUCH ANYTHIND
+
+
+// Load tasks from localStorage when the page loads
+let tasks = [];
+function loadTasks(){
+    const saved = localStorage.getItem('tasks');
+    if(saved){
+        tasks = JSON.parse(saved);
     }
 }
 
-async function fetchWeatherForecast(){
-    try{
-        const response = await fetch(weatherForecast);
-        const data = await response.json();
-       console.log(data);
-    }catch(error){
-        console.log(error);
+
+// save tasks to localStorage
+function saveTasks(){
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+ 
+function renderTasks(){
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) =>{
+        const li = document.createElement('li');
+        li.classList.add(task.completed ? 'Completed' : 'Incomplete');
+        
+        li.innerHTML = `
+            <span>${task.text}</span>
+            <button onclick="toggleTaskStatus(${index})">
+            ${task.completed ? 'Undone' : 'Done'}
+            </button>
+            <button onclick="deleteTask(${index})">Delete</button>
+            `;
+            taskList.appendChild(li)
+            
+    });
+
+    // save everytime tasks are rendered
+    saveTasks();
+}
+
+function addTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText) {
+        tasks.push({
+            text: taskText,
+            completed: false
+        });
+        taskInput.value = '';
+        renderTasks();
     }
+}
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+}
+
+function toggleTaskStatus(index) {
+    tasks[index].completed = !tasks[index].completed;
+    renderTasks();
+}
+
+// Event Listeners
+addTaskBtn.addEventListener('click', addTask);
+
+
+//load task before rendering for the first time
+loadTasks();
+renderTasks();
+
+
+//clear all task method
+// Clear all tasks
+
+function clearAllTasks() {
+    if (confirm("Are you sure you want to delete all tasks for the day?")) {
+        tasks = [];
+        saveTasks();
+        renderTasks();
+    }
+}
+
+// Add button listener
+clearAllBtn.addEventListener('click', clearAllTasks);
+
+
+
+
+// ******NEWS API TEST*****
+
+let articles = [];       // from API
+let currentIndex = 0;    // which article is shown
+
+function displayArticle(index) {
+    const viewer = document.getElementById("newsViewer");
+
+//Handle wrap-around if index is beyound array length
+if(index >= articles.length){
+    index = 0;
+}
+const article = articles[index];
+
+//skip if no image
+if(!article.urlToImage){
+    //Move to next article
+    currentIndex = (index + 1) % articles.length;
+    displayArticle(currentIndex);
+    return;
+}
+    //fade out before switching
+    viewer.classList.add("fade-out");
+
+    setTimeout(() =>{
+
+const article = articles[index];
+    
+    // Handle missing image
+    const imageUrl = article.urlToImage ? article.urlToImage : "placeholder.jpg";
+
+    document.getElementById("newsTitle").textContent = article.title;
+    document.getElementById("newsImage").src = imageUrl;
+    document.getElementById("newsDesc").textContent = article.description || "No description available.";
+
+    const sourceName = article.source?.name || "Unknown Source";
+    const location = article.author || "Unknown Author/Location";
+
+    document.getElementById("newsSource").textContent =
+        `Source: ${sourceName} | Location: ${location}`;
+        const linkEl = document.getElementById("newsLink");
+        linkEl.href = article.url;
+        linkEl.textContent = "Read Full Article";
+
+         viewer.classList.remove("fade-out");
+        
+    },600);
+    
 }
 
 
 
-async function fetchNews(){
-    try{
-        const response = await fetch(newsApiURL);
-        const data = await response.json();
-       console.log(data);
-    }catch(error){
-        console.log(error);
-    }
+
+fetch(newsApiURL)
+    .then(res => res.json())
+    .then(data => {
+        articles = data.articles;   // save the list
+        displayArticle(currentIndex); // show first one
+
+          setInterval(() => {
+            currentIndex = (currentIndex + 1) % articles.length;
+            displayArticle(currentIndex);
+        }, 25000);
+    })
+    .catch(err => console.error(err));
+
+
+
+
+
+    
+  
+
+
+/// ****WEATHER ***
+
+    async function loadWeather() {
+  try {
+    const response = await fetch( weather
+    );
+
+    const data = await response.json();
+    console.log(data);
+
+    // Extract needed values
+    const iconUrl = "https:" + data.current.condition.icon;
+    const temp = data.current.temp_c;
+   const description = data.current.condition.text;
+    const locationName = ` ${data.location.region},${data.location.country}`;
+
+    // Update webpage
+    document.getElementById("weather-icon").src = iconUrl;
+    document.getElementById("weather-desc").textContent = description;
+    document.getElementById("weather-location").textContent = locationName;
+    document.getElementById("temp").textContent = temp;
+
+  } catch (error) {
+    console.error("Weather error:", error);
+  }
 }
 
-async function fetchNewsTech(){
-    try{
-        const response = await fetch(newsTechURl);
-        const data = await response.json();
-       console.log(data);
-    }catch(error){
-        console.log(error);
-    }
-}
 
-
+// JOKES
 async function fetchJokes(){
     try{
         const response = await fetch(jokeAPIUrl);
         const data = await response.json();
-       console.log(data);
+       //console.log(data);
+       jokeText.textContent = data.joke;
     }catch(error){
         console.log(error);
     }
 }
 
+jokeBtn.addEventListener('click', fetchJokes);
 
-
-// fetchNews();  // this is reaching the console. fetch OK
-// fetchNewsTech();
-// fetchJokes();
- //fetchWeather(); 
-// fetchWeatherForecast();
+loadWeather();
+fetchJokes();

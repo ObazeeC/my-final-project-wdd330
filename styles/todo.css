@@ -41,6 +41,10 @@ h1, h2 {
     display: flex;
     justify-content: space-between;
 }
+#task-input{
+    width: 80%;
+    padding: 1rem;
+}
 
 button {
     background-color: #4CAF50;
@@ -51,7 +55,22 @@ button {
     border-radius: 5px;
     margin-left: 5px;
 }
+#add-task-btn{
+    background-color: black;
+  
+    padding:1rem;
+}
+#clearAll-task-btn{
+    background-color: black;
 
+    padding:1rem;
+}
+#clrTask{
+    display: inline;
+    background-color: black;
+    color:rgb(245, 8, 8);
+    padding:1rem;
+}
 button:hover {
     background-color: #45a049;
 }
@@ -75,4 +94,25 @@ footer{
     max-width: 600px;
     margin: 50px auto;
     text-align: center;
+}
+li span {
+    display: inline-block;
+    width: 250px;    /* set your preferred width */
+    white-space: nowrap; /* keep text on one line */
+    overflow: hidden;    /* hide overflow */
+    text-overflow: ellipsis; /* add "..." */
+}
+
+
+/* NEWS DIV */
+#newsViewer {
+    opacity: 1;
+    transition: opacity 0.6s ease;   /* fade duration */
+}
+
+#newsViewer.fade-out {
+    opacity: 0;
+}
+#quote-of-the-day{
+    border: 2px solid red
 }

@@ -31,24 +31,38 @@
         
         <!-- To-Do List -->
         <div id="task-list-container">
-            <h2>Your Tasks</h2>
-            <input type="text" id="task-input" placeholder="Add a new task">
-            <button id="add-task-btn">Add Task</button>
+            <h2>Your Tasks Today</h2>
             <ul id="task-list"></ul>
+            <input type="text" id="task-input" placeholder="Add a new task">
+             <button id="add-task-btn">➕</button>
         </div>
 
-        <!-- News Section -->
-        <div id="news-section">
+        <!-- News Section
+          <div id="news-section">
             <h2>Today's News</h2>
             <ul id="news-list">
-                <!-- News articles will go here -->
+              
             </ul>
         </div>
-        
-         <div id="quote-of-the-day">
-            <h2>Weather</h2>
-            <p id="quote">Loading...</p>
+         
+         -->
+       
+        <div id="newsViewer">
+            <h2 id="newsTitle"></h2>
+            <img id="newsImage" style="max-width: 350px; display:block; margin-bottom: 10px;">
+            <p id="newsDesc"></p>
+            <p id="newsSource"></p>
+            <a id="newsLink" href="#" target="_blank">Read Full Article</a>
         </div>
+
+        
+        <div id="weather">
+            <img id="weather-icon" alt="Weather Icon" />
+              <p id="temp"></p>
+            <p id="weather-desc"></p>
+            <p id="weather-location"></p>
+        </div>
+
 
         <!-- Motivational Quote Section -->
         <div id="quote-of-the-day">
@@ -63,6 +77,7 @@
             <button id="get-joke-btn">Get a New Joke</button>
         </div>
 
+       <p id="clrTask">Clear All tasks for the day</p> <button id="clearAll-task-btn"> ❌</button>
         
     </div>
     
