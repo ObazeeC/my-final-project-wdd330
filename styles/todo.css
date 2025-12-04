@@ -116,3 +116,7 @@ li span {
 #quote-of-the-day{
     border: 2px solid red
 }
+#newsImage{
+    width: 350px;
+    height:auto;
+}

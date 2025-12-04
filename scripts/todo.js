@@ -4,6 +4,8 @@ const quotesAPIUrl = 'https://api.quotable.io/random';
 const jokeAPIUrl = 'https://v2.jokeapi.dev/joke/Any?type=single';
 const weather = 'https://api.weatherapi.com/v1/current.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
 const jokeText = document.getElementById('joke');
+const news2 = ' https://newsdata.io/api/1/latest?apikey=pub_f7241adf337247e99f01e871265b6c38&q=sport&country=gb';
+
 
 const taskInput = document.getElementById('task-input');
 const addTaskBtn = document.getElementById('add-task-btn');
@@ -38,16 +40,84 @@ example : http://api.weatherapi.com/v1/current.json?key=<YOUR_API_KEY>&q=London
 
 
 
+// DOM elements
+const newsTitleEl = document.getElementById("newsTitle");
+const newsImageEl = document.getElementById("newsImage");
+const newsLinkEl  = document.getElementById("newsLink");
+
+let newsArticles = [];
+let currentNewsIndex = 0;
+
+// Fetch & filter articles
+async function loadNews() {
+    try {
+        const res = await fetch(news2);
+        const data = await res.json();
+
+        // Keep only articles that have an image
+        newsArticles = data.results.filter(a => a.image_url);
+
+        if (newsArticles.length === 0) {
+            newsTitleEl.textContent = "No news articles with images found.";
+            return;
+        }
+
+        // Display the first one
+        displayNewsArticle();
+        
+        // Auto-rotate every 10 seconds
+        setInterval(nextNewsArticle, 10000);
+
+    } catch (error) {
+        console.error("News API error:", error);
+    }
+}
+
+function displayNewsArticle() {
+    const article = newsArticles[currentNewsIndex];
+
+    // Fade-out animation
+    const viewer = document.getElementById("newsViewer");
+    viewer.classList.add("fade-out");
+
+    setTimeout(() => {
+        newsTitleEl.textContent = article.title;
+        newsImageEl.src = article.image_url;
+        newsLinkEl.href = article.link;
+        newsLinkEl.textContent = "Read Full Story";
+
+        viewer.classList.remove("fade-out");
+
+    }, 500);
+}
+
+function nextNewsArticle() {
+    currentNewsIndex = (currentNewsIndex + 1) % newsArticles.length;
+    displayNewsArticle();
+}
+
+loadNews();
 
 
 
 
 
+/*
+async function fetchNews(){
+    try{
+        const response = await fetch(news2);
+        const data = await response.json();
+       console.log(data);
+     //  jokeText.textContent = data.joke;
+    }catch(error){
+        console.log(error);
+    }
+}
 
 
 
-
-
+fetchNews();
+*/
 
 
 
@@ -175,11 +245,25 @@ function clearAllTasks() {
 // Add button listener
 clearAllBtn.addEventListener('click', clearAllTasks);
 
+//******************2222***************************** */
+
+
+
+
+
+
+
+
+
 
 
 
 // ******NEWS API TEST*****
 
+
+
+
+/*
 let articles = [];       // from API
 let currentIndex = 0;    // which article is shown
 
@@ -245,7 +329,7 @@ fetch(newsApiURL)
     .catch(err => console.error(err));
 
 
-
+*/
 
 
     
@@ -260,7 +344,7 @@ fetch(newsApiURL)
     );
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
     // Extract needed values
     const iconUrl = "https:" + data.current.condition.icon;
