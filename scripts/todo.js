@@ -2,7 +2,7 @@ const newsApiURL = 'https://newsapi.org/v2/everything?domains=wsj.com&apiKey=4c2
 //const newsTechURl = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=4c2e938b6b194885a76882996b92f3b2';
 const quotesAPIUrl = 'https://api.quotable.io/random';
 const jokeAPIUrl = 'https://v2.jokeapi.dev/joke/Any?type=single';
-const weather = 'http://api.weatherapi.com/v1/current.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
+const weather = 'https://api.weatherapi.com/v1/current.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
 const jokeText = document.getElementById('joke');
 
 const taskInput = document.getElementById('task-input');
