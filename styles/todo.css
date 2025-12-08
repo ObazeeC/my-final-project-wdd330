@@ -84,11 +84,14 @@ button:hover {
 
 .completed {
     text-decoration: line-through;
-    color: gray;
+    color: rgb(175, 35, 35);
 }
 
 .incomplete {
     color: black;
+
+
+    
 }
 footer{
     max-width: 600px;
@@ -120,3 +123,5 @@ li span {
     width: 400px;
     height:auto;
 }
+
+
