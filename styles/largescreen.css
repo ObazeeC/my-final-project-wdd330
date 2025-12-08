@@ -1,0 +1,12 @@
+@media screen and (min-width: 1200px) {
+    **{
+    box-sizing: border-box;
+  }
+    header,
+    nav,
+    main,
+    #menu,
+    footer{
+        max-width: 100%;
+    }
+}
