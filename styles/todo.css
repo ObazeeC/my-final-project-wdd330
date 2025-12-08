@@ -68,7 +68,7 @@ h1, h2 {
     justify-content: space-between;
 }
 #task-input{
-    width: 450px;
+    width: 280px;
     padding: 1rem;
 }
 
@@ -99,10 +99,11 @@ button {
 }
 #clearAll-task-btn{
     background-color: black;
+    width: 200px;
     color: red;
     margin:0 auto;
     display: block;
-    padding:1rem;
+    padding:1.2rem;
 }
 #clearAll-task-btn:hover{
     background-color: rgb(37, 37, 37);
@@ -119,6 +120,7 @@ button:hover {
     margin:1rem auto;
     background-color: rgba(6, 250, 14, 0.4);
     position: relative;
+    padding:.5rem;
 }
 #weather img{
     display: block;
@@ -129,21 +131,13 @@ button:hover {
 #temp{
     position: absolute;
     top: 40px;
-    right: 190px;
+    left: 245px;
     font-weight: bold;
 }
 
-#weather-desc{
-    position:absolute;
-    bottom: 24px;
-    right: 240px;
-}
-
-#weather-location{
-   position:absolute;
-    bottom: 7px;
-    left: 150px;
-    
+#weather p{
+    text-align: center;
+   
 }
  #quote-of-the-day, 
  #joke-of-the-day
