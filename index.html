@@ -9,24 +9,36 @@
     <title>To do</title>
    <link rel="stylesheet" href="styles/todo.css">
     <script src="scripts/todo.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
          <div class="pagelogo">
-       <img loading="lazy" src="images/logo.web" alt="Site Logo">
+       <img loading="lazy" src="images/logo_app.webp" alt="Site Logo">
 
-            <div class="iconlogo hedlogo">
+        <div class="iconlogo hedlogo">
         <a href="https://www.facebook.com/login.php/" target="_blank" ><img loading="lazy" src="images/fbook.webp" alt="Facebook logo"></a> 
         <a href="https://www.instagram.com/accounts/login/" target="_blank"> <img loading="lazy" src="images/instagram02.webp" alt="Instagram"></a>  
         <a href="https://web.whatsapp.com/" target="_blank"><img loading="lazy" src="images/whatsapp01.webp" alt="Whatsapp"></a>
-        <a href="https://www.youtube.com/" target="_blank" ><img loading="lazy" src="images/youtube01.webp" alt="Youtube"></a> 
-        <a href="https://x.com/" ><img loading="lazy" src="images/twitter02.webp" alt="twitter"></a> 
-        
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+         
+    
       </div>
 
       </div>
     </header>
+
+
+
     <div class="app-container">
+
         <h1>Daily Task Manager </h1>
         
         <!-- To-Do List -->
@@ -37,51 +49,30 @@
              <button id="add-task-btn">➕</button>
         </div>
 
-        <!-- News Section
-          <div id="news-section">
-            <h2>Today's News</h2>
-            <ul id="news-list">
-              
-            </ul>
-        </div>
-         
-         -->
-       <!-- 
-        <div id="newsViewer">
-            <h2 id="newsTitle"></h2>
-            <img id="newsImage" style="max-width: 350px; display:block; margin-bottom: 10px;">
-            <p id="newsDesc"></p>
-            <p id="newsSource"></p>
-            <a id="newsLink" href="#" target="_blank">Read Full Article</a>
-        </div>
-        -->
+        
 <div id="newsViewer" class="news-box">
     <h2 id="newsTitle"></h2>
     <img id="newsImage" />
-    <a id="newsLink" target="_blank"></a>
+    <a id="newsLink" target="_blank">  </a>
 </div>
 
 
         
         <div id="weather">
-            <img id="weather-icon" alt="Weather Icon" />
+              <img id="weather-icon" alt="Weather Icon" />
               <p id="temp"></p>
-            <p id="weather-desc"></p>
-            <p id="weather-location"></p>
+              <p id="weather-desc"></p>
+              <p id="weather-location"></p>
         </div>
 
 
         <!-- Motivational Quote Section -->
           <div id="quote-of-the-day">
-            <h2>Motivational Quote</h2>
+            <h2>Quote of Day</h2>
             <p id="quote">Loading...</p>
         </div>
         
         
-
-
-       
- 
 
         <!-- Joke Section -->
         <div id="joke-of-the-day">
@@ -90,14 +81,15 @@
             <button id="get-joke-btn">Get a another Joke</button>
         </div>
 
-       <p id="clrTask">Clear All tasks for the day</p> <button id="clearAll-task-btn"> ❌</button>
+       
+       <button id="clearAll-task-btn">Reset Tasks</button>
         
     </div>
     
     
 
     <footer>
-    <p>©️ <span id="getYear"></span> | Esosa C. Obazee | Nigeria </p>
+    <p>©️2025 <span id="getYear"></span> | Esosa C. Obazee | Nigeria </p>
       <!--  <p> Last Modified <span id="lastModified"></span></p>-->  
 </footer>
 </body>

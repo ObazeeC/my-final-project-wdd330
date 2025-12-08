@@ -97,18 +97,20 @@ function renderTasks(){
     taskList.innerHTML = '';
     tasks.forEach((task, index) =>{
         const li = document.createElement('li');
-        li.classList.add(task.completed ? 'Completed' : 'Incomplete');
+        li.classList.add(task.completed ? 'completed' : 'Incomplete');
         
         li.innerHTML = `
             <span>${task.text}</span>
             <button onclick="toggleTaskStatus(${index})">
             ${task.completed ? 'Undone' : 'Done'}
             </button>
-            <button onclick="deleteTask(${index})">Delete</button>
+            
+            <button class="delete-btn" onclick="deleteTask(${index})">❌</button>
             `;
             taskList.appendChild(li)
             
     });
+    
 
     // save everytime tasks are rendered
     saveTasks();
@@ -241,7 +243,8 @@ fetch(newsApiURL)
 
     // Extract needed values
     const iconUrl = "https:" + data.current.condition.icon;
-    const temp = data.current.temp_c;
+    //const temp = data.current.temp_c;
+    const temp = `${data.current.temp_c}°c`;
    const description = data.current.condition.text;
     const locationName = ` ${data.location.region},${data.location.country}`;
 
@@ -298,8 +301,8 @@ async function loadNews() {
         // Display the first one
         displayNewsArticle();
         
-        // Auto-rotate every 10 seconds
-        setInterval(nextNewsArticle, 10000);
+        // Auto-rotate 
+        setInterval(nextNewsArticle, 30000);
 
     } catch (error) {
         console.error("News API error:", error);
@@ -337,7 +340,7 @@ async function getQuote() {
   const response = await fetch("http://api.quotable.io/random");
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+   // console.log(data)
    quote.textContent = `${data.content} — ${data.author}`;
   } else {
     console.error("Error fetching quote");
