@@ -68,7 +68,7 @@ h1, h2 {
     justify-content: space-between;
 }
 #task-input{
-    width: 280px;
+    width: 80%;
     padding: 1rem;
 }
 
@@ -131,7 +131,7 @@ button:hover {
 #temp{
     position: absolute;
     top: 40px;
-    left: 245px;
+    left: 275px;
     font-weight: bold;
 }
 
