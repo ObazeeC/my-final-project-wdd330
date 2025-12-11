@@ -10,7 +10,7 @@ h1,h2,p{
   font-optical-sizing: auto;
 }
 header{
-    border:2px solid red;
+   
    
 }
 header img{
@@ -22,6 +22,7 @@ h1{
     background-color: green;
     border-radius: .5rem;
     color:white;
+   
 }
 #task-list-container h2{
     margin:1rem auto;
@@ -34,6 +35,9 @@ body {
    
 }
 
+
+/*
+
 .app-container {
     max-width: 600px;
     margin: 50px auto;
@@ -43,6 +47,9 @@ body {
     border-bottom-right-radius: 2rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+*/
+
 
 h1, h2 {
     text-align: center;
@@ -121,6 +128,7 @@ button:hover {
     background-color: rgba(6, 250, 14, 0.4);
     position: relative;
     padding:.5rem;
+    
 }
 #weather img{
     display: block;
@@ -240,3 +248,60 @@ li span {
 .delete-btn:hover {
     background-color: rgb(75, 3, 3);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* menu */
+/* ----- HAMBURGER ICON ----- */
+header {
+    position: relative;
+}
+
+header::after {
+    content: "☰";
+    font-size: 2rem;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none; /* hidden on desktop */
+}
+
+/* ----- MOBILE MENU PANEL ----- */
+header::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: -240px; /* hidden by default */
+    width: 220px;
+    height: 100vh;
+    background: #222;
+    transition: right 0.3s ease;
+    z-index: 900;
+}
+
+/* ----- SHOW MENU WHEN ACTIVE ----- */
+header.menu-open::before {
+    right: 0;
+}
+
+header.menu-open::after {
+    content: "✕"; /* change icon when open */
+}
+
+

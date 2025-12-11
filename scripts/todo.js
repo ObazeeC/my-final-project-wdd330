@@ -4,7 +4,8 @@ const quotesAPIUrl = 'https://api.quotable.io/random';
 const jokeAPIUrl = 'https://v2.jokeapi.dev/joke/Any?type=single';
 const weather = 'https://api.weatherapi.com/v1/current.json?key=590277d22f1844e28c9232133252811&q=auto:ip';
 const jokeText = document.getElementById('joke');
-const news2 = ' https://newsdata.io/api/1/latest?apikey=pub_f7241adf337247e99f01e871265b6c38&q=sport&country=gb';
+ const news2 = ' https://newsdata.io/api/1/latest?apikey=pub_f7241adf337247e99f01e871265b6c38&q=sport&country=gb'     
+// const news2 = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=399861bd721a422799657bf521b112c8';  399861bd721a422799657bf521b112c8;
 
 
 const taskInput = document.getElementById('task-input');
@@ -291,7 +292,8 @@ async function loadNews() {
         const data = await res.json();
 
         // Keep only articles that have an image
-        newsArticles = data.results.filter(a => a.image_url);
+        console.log(data);
+       newsArticles = data.results.filter(a => a.image_url);
 
         if (newsArticles.length === 0) {
             newsTitleEl.textContent = "No news articles with images found.";
@@ -370,3 +372,9 @@ loadNews();
 
 loadWeather();
 fetchJokes();
+
+
+
+// menu
+
+    
